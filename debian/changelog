@@ -1,0 +1,8 @@
+libexif (0.6.19-2slp2+1) unstable; urgency=low
+
+  * Initial Release
+  * Git: pkgs/l/libexif
+  * Tag: libexif_0.6.19-2slp2+1
+
+ -- Sangchul Lee <sc11.lee@samsung.com>  Wed, 07 Dec 2011 14:06:05 +0900
+
