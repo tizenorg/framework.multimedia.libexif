@@ -29,7 +29,7 @@ The libexif-devel package contains the libraries and header files
 for writing programs that use libexif.
 
 %prep
-%setup -q -n %{name}-%{version}-samsung
+%setup -q -n %{name}-%{version}
 
 %build
 
