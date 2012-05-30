@@ -7,6 +7,7 @@ License:    LGPLv2+
 #URL:        http://libexif.sourceforge.net/
 # somewhat heavily modified to add Samsung's own tags for some reason...
 Source0:    %{name}-%{version}-samsung.tar.gz
+Source1001: packaging/libexif.manifest 
 
 Requires(post):  /sbin/ldconfig
 Requires(postun):  /sbin/ldconfig
@@ -32,6 +33,7 @@ for writing programs that use libexif.
 %setup -q -n %{name}-%{version}
 
 %build
+cp %{SOURCE1001} .
 
 %configure --disable-static \
     --disable-docs
@@ -52,9 +54,11 @@ rm -rf %{buildroot}
 %postun -p /sbin/ldconfig
 
 %files -f libexif-12.lang
+%manifest libexif.manifest
 %{_libdir}/libexif.so.*
 
 %files devel
+%manifest libexif.manifest
 %{_includedir}/libexif
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/libexif.pc
