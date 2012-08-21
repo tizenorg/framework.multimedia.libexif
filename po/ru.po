@@ -8,17 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: libexif-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-10-24 19:34+0900\n"
+"POT-Creation-Date: 2009-11-12 22:15-0800\n"
 "PO-Revision-Date: 2009-10-09 12:21-0700\n"
 "Last-Translator: Alexandre Prokoudine <alexandre.prokoudine@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
-"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.10.2\n"
-"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: libexif/canon/mnote-canon-entry.c:40 libexif/fuji/mnote-fuji-entry.c:35
 #: libexif/olympus/mnote-olympus-entry.c:37
@@ -1307,7 +1306,7 @@ msgstr "%.2f mm"
 msgid "%.2f EV"
 msgstr "%.2f EV"
 
-#: libexif/canon/mnote-canon-entry.c:655 libexif/exif-entry.c:1067
+#: libexif/canon/mnote-canon-entry.c:655 libexif/exif-entry.c:1063
 #, c-format
 msgid "1/%i"
 msgstr "1/%i"
@@ -1693,45 +1692,45 @@ msgstr "Motorola"
 msgid "Intel"
 msgstr "Intel"
 
-#: libexif/exif-data.c:797
+#: libexif/exif-data.c:784
 msgid "Size of data too small to allow for EXIF data."
 msgstr ""
 
-#: libexif/exif-data.c:858
+#: libexif/exif-data.c:845
 msgid "EXIF marker not found."
 msgstr "Маркер EXIF не найден"
 
-#: libexif/exif-data.c:885
+#: libexif/exif-data.c:872
 msgid "EXIF header not found."
 msgstr "Заголовок EXIF не найден"
 
-#: libexif/exif-data.c:901
+#: libexif/exif-data.c:888
 msgid "Unknown encoding."
 msgstr "Неизвестная кодировка"
 
-#: libexif/exif-data.c:1216
+#: libexif/exif-data.c:1200
 msgid "Ignore unknown tags"
 msgstr "Игнорировать неизвестные тэги"
 
-#: libexif/exif-data.c:1217
+#: libexif/exif-data.c:1201
 msgid "Ignore unknown tags when loading EXIF data."
 msgstr "Игнорировать неизвестные тэги при загрузке данных EXIF"
 
-#: libexif/exif-data.c:1218
+#: libexif/exif-data.c:1202
 msgid "Follow specification"
 msgstr "Следовать спецификации"
 
-#: libexif/exif-data.c:1219
+#: libexif/exif-data.c:1203
 msgid ""
 "Add, correct and remove entries to get EXIF data that follows the "
 "specification."
 msgstr ""
 
-#: libexif/exif-data.c:1221
+#: libexif/exif-data.c:1205
 msgid "Do not change maker note"
 msgstr ""
 
-#: libexif/exif-data.c:1222
+#: libexif/exif-data.c:1206
 msgid ""
 "When loading and resaving Exif data, save the maker note unmodified. Be "
 "aware that the maker note can get corrupted."
@@ -2323,88 +2322,88 @@ msgstr "Тэг UserComment не соответствует стандарту, �
 msgid "Byte at position %i: 0x%02x"
 msgstr "Байт в позиции %i: 0x%02x"
 
-#: libexif/exif-entry.c:930
+#: libexif/exif-entry.c:926
 msgid "Unknown Exif Version"
 msgstr "Неизвестная версия EXIF"
 
-#: libexif/exif-entry.c:934
+#: libexif/exif-entry.c:930
 #, c-format
 msgid "Exif Version %d.%d"
 msgstr "EXIF версии %d.%d"
 
-#: libexif/exif-entry.c:945
+#: libexif/exif-entry.c:941
 msgid "FlashPix Version 1.0"
 msgstr "FlashPix версии 1.0"
 
-#: libexif/exif-entry.c:947
+#: libexif/exif-entry.c:943
 msgid "FlashPix Version 1.01"
 msgstr "FlashPix версии 1.01"
 
-#: libexif/exif-entry.c:949
+#: libexif/exif-entry.c:945
 msgid "Unknown FlashPix Version"
 msgstr "Неизвестная версия FlashPix"
 
-#: libexif/exif-entry.c:962 libexif/exif-entry.c:975 libexif/exif-entry.c:1627
-#: libexif/exif-entry.c:1632 libexif/exif-entry.c:1635
-#: libexif/exif-entry.c:1640 libexif/exif-entry.c:1641
+#: libexif/exif-entry.c:958 libexif/exif-entry.c:971 libexif/exif-entry.c:1623
+#: libexif/exif-entry.c:1628 libexif/exif-entry.c:1631
+#: libexif/exif-entry.c:1636 libexif/exif-entry.c:1637
 msgid "[None]"
 msgstr "[Ничего]"
 
-#: libexif/exif-entry.c:964
+#: libexif/exif-entry.c:960
 msgid "(Photographer)"
 msgstr "(Фотограф)"
 
-#: libexif/exif-entry.c:978
+#: libexif/exif-entry.c:974
 msgid "(Editor)"
 msgstr "(Редактор)"
 
-#: libexif/exif-entry.c:1002
+#: libexif/exif-entry.c:998
 #, c-format
 msgid "%.02lf EV"
 msgstr "%.02lf EV"
 
-#: libexif/exif-entry.c:1003
+#: libexif/exif-entry.c:999
 #, c-format
 msgid " (f/%.01f)"
 msgstr ""
 
-#: libexif/exif-entry.c:1037
+#: libexif/exif-entry.c:1033
 #, c-format
 msgid " (35 equivalent: %d mm)"
 msgstr " (35мм эквивалент: %d мм)"
 
-#: libexif/exif-entry.c:1070 libexif/exif-entry.c:1071
+#: libexif/exif-entry.c:1066 libexif/exif-entry.c:1067
 msgid " sec."
 msgstr " сек."
 
-#: libexif/exif-entry.c:1082 libexif/exif-entry.c:1099
-#: libexif/exif-entry.c:1143
+#: libexif/exif-entry.c:1078 libexif/exif-entry.c:1095
+#: libexif/exif-entry.c:1139
 #, c-format
 msgid "%.02f EV"
 msgstr "%.02f EV"
 
-#: libexif/exif-entry.c:1085
+#: libexif/exif-entry.c:1081
 #, c-format
 msgid " (1/%d sec.)"
 msgstr " (1/%d сек.)"
 
-#: libexif/exif-entry.c:1087
+#: libexif/exif-entry.c:1083
 #, c-format
 msgid " (%d sec.)"
 msgstr " (%d сек.)"
 
-#: libexif/exif-entry.c:1100
+#: libexif/exif-entry.c:1096
 #, c-format
 msgid " (%.02f cd/m^2)"
 msgstr ""
 
-#: libexif/exif-entry.c:1110
+#: libexif/exif-entry.c:1106
 msgid "DSC"
 msgstr "DSC"
 
-#: libexif/exif-entry.c:1112 libexif/exif-entry.c:1152
-#: libexif/exif-entry.c:1239 libexif/exif-entry.c:1290
-#: libexif/exif-entry.c:1299 libexif/exif-entry.c:1335
+#: libexif/exif-entry.c:1108 libexif/exif-entry.c:1148
+#: libexif/exif-entry.c:1235 libexif/exif-entry.c:1286
+#: libexif/exif-entry.c:1295 libexif/exif-entry.c:1331
 #: libexif/fuji/mnote-fuji-entry.c:236 libexif/fuji/mnote-fuji-entry.c:245
 #: libexif/pentax/mnote-pentax-entry.c:350
 #: libexif/pentax/mnote-pentax-entry.c:359
@@ -2412,76 +2411,76 @@ msgstr "DSC"
 msgid "Internal error (unknown value %i)"
 msgstr "Внутренняя ошибка (неизвестное значение %i)"
 
-#: libexif/exif-entry.c:1120
+#: libexif/exif-entry.c:1116
 msgid "-"
 msgstr "-"
 
-#: libexif/exif-entry.c:1121
+#: libexif/exif-entry.c:1117
 msgid "Y"
 msgstr "Y"
 
-#: libexif/exif-entry.c:1122
+#: libexif/exif-entry.c:1118
 msgid "Cb"
 msgstr "Cb"
 
-#: libexif/exif-entry.c:1123
+#: libexif/exif-entry.c:1119
 msgid "Cr"
 msgstr "Cr"
 
-#: libexif/exif-entry.c:1124
+#: libexif/exif-entry.c:1120
 msgid "R"
 msgstr "R"
 
-#: libexif/exif-entry.c:1125
+#: libexif/exif-entry.c:1121
 msgid "G"
 msgstr "G"
 
-#: libexif/exif-entry.c:1126
+#: libexif/exif-entry.c:1122
 msgid "B"
 msgstr "B"
 
-#: libexif/exif-entry.c:1127
+#: libexif/exif-entry.c:1123
 msgid "reserved"
 msgstr "зарезервировано"
 
-#: libexif/exif-entry.c:1150
+#: libexif/exif-entry.c:1146
 msgid "Directly photographed"
 msgstr ""
 
-#: libexif/exif-entry.c:1163
+#: libexif/exif-entry.c:1159
 msgid "YCbCr4:2:2"
 msgstr "YCbCr4:2:2"
 
-#: libexif/exif-entry.c:1165
+#: libexif/exif-entry.c:1161
 msgid "YCbCr4:2:0"
 msgstr "YCbCr4:2:0"
 
-#: libexif/exif-entry.c:1182
+#: libexif/exif-entry.c:1178
 #, c-format
 msgid "Within distance %i of (x,y) = (%i,%i)"
 msgstr ""
 
-#: libexif/exif-entry.c:1191
+#: libexif/exif-entry.c:1187
 #, c-format
 msgid "Within rectangle (width %i, height %i) around (x,y) = (%i,%i)"
 msgstr ""
 
-#: libexif/exif-entry.c:1197
+#: libexif/exif-entry.c:1193
 #, c-format
 msgid "Unexpected number of components (%li, expected 2, 3, or 4)."
 msgstr "Неожиданное количество компонентов (%li, ожидалось 2, 3, или 4)."
 
-#: libexif/exif-entry.c:1235
+#: libexif/exif-entry.c:1231
 #, fuzzy
 msgid "Sea level"
 msgstr "Заряд батареи"
 
-#: libexif/exif-entry.c:1237
+#: libexif/exif-entry.c:1233
 #, fuzzy
 msgid "Sea level reference"
 msgstr "Эталон высоты"
 
-#: libexif/exif-entry.c:1345
+#: libexif/exif-entry.c:1341
 #, c-format
 msgid "Unknown value %i"
 msgstr "Неизвестное значение %i"
@@ -3761,8 +3760,8 @@ msgstr "Авто"
 
 #: libexif/exif-tag.c:645
 msgid ""
-"A character string containing the name of the image creator, encoded in "
-"UTF-16LE."
+"A character string containing the name of the image creator, encoded in UTF-"
+"16LE."
 msgstr ""
 
 #: libexif/exif-tag.c:649
@@ -3771,8 +3770,8 @@ msgstr ""
 
 #: libexif/exif-tag.c:650
 msgid ""
-"A character string containing key words describing the image, encoded in "
-"UTF-16LE."
+"A character string containing key words describing the image, encoded in UTF-"
+"16LE."
 msgstr ""
 
 #: libexif/exif-tag.c:654

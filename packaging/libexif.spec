@@ -1,15 +1,13 @@
+#sbs-git:slp/pkgs/l/libexif libexif 0.6.19 57d8319d0146f2739299469313fc694846cd7c10
 Name:       libexif
 Summary:    Library for extracting extra information from image files
-Version:    0.6.19
+Version: 0.6.19
 Release:    1
 Group:      System/Libraries
 License:    LGPLv2+
-URL:        http://libexif.sourceforge.net/
-Source0:    http://downloads.sourceforge.net/project/libexif/libexif/%{version}/libexif-%{version}.tar.gz
-Patch0:     Add-samsung-makernote-feature.patch
-Patch1:     modify-boilerplate.patch
-Patch2:     Bug-Fix-add-initialization-code-for-new-mnote-entry-.patch
-Patch3:     enhance-code-stability-for-exif_data_mnote_set_mem_f.patch
+#URL:        http://libexif.sourceforge.net/
+# somewhat heavily modified to add Samsung's own tags for some reason...
+Source0:    %{name}-%{version}-samsung.tar.gz
 
 Requires(post):  /sbin/ldconfig
 Requires(postun):  /sbin/ldconfig
@@ -31,14 +29,8 @@ Requires:   %{name} = %{version}-%{release}
 The libexif-devel package contains the libraries and header files
 for writing programs that use libexif.
 
-
-
 %prep
-%setup -q -n %{name}-%{version}
-%patch0 -p1 -b .Add-samsung-makernote-feature
-%patch1 -p1 -b .modify-boilerplate.patch
-%patch2 -p1 -b .Bug-Fix-add-initialization-code-for-new-mnote-entry-.patch
-%patch3 -p1 -b .enhance-code-stability-for-exif_data_mnote_set_mem_f.patch
+%setup -q -n %{name}-%{version}-samsung
 
 %build
 
@@ -60,7 +52,7 @@ rm -rf %{buildroot}
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%files -f libexif-12.lang 
+%files -f libexif-12.lang
 %{_libdir}/libexif.so.*
 
 %files devel

@@ -7,11 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libexif 0.6.18\n"
 "Report-Msgid-Bugs-To: libexif-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-10-24 19:34+0900\n"
+"POT-Creation-Date: 2009-11-12 22:15-0800\n"
 "PO-Revision-Date: 2009-10-11 17:35+1030\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
-"Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1266,7 +1265,7 @@ msgstr "%.2f mm"
 msgid "%.2f EV"
 msgstr "%.2f EV"
 
-#: libexif/canon/mnote-canon-entry.c:655 libexif/exif-entry.c:1067
+#: libexif/canon/mnote-canon-entry.c:655 libexif/exif-entry.c:1063
 #, c-format
 msgid "1/%i"
 msgstr "1/%i"
@@ -1617,45 +1616,45 @@ msgstr "Motorola"
 msgid "Intel"
 msgstr "Intel"
 
-#: libexif/exif-data.c:797
+#: libexif/exif-data.c:784
 msgid "Size of data too small to allow for EXIF data."
 msgstr "Dữ liệu có kích cỡ quá nhỏ để chứa dữ liệu EXIF."
 
-#: libexif/exif-data.c:858
+#: libexif/exif-data.c:845
 msgid "EXIF marker not found."
 msgstr "Không tìm thấy dấu hiệu EXIF."
 
-#: libexif/exif-data.c:885
+#: libexif/exif-data.c:872
 msgid "EXIF header not found."
 msgstr "Không tìm thấy phần đầu EXIF."
 
-#: libexif/exif-data.c:901
+#: libexif/exif-data.c:888
 msgid "Unknown encoding."
 msgstr "Không biết bảng mã."
 
-#: libexif/exif-data.c:1216
+#: libexif/exif-data.c:1200
 msgid "Ignore unknown tags"
 msgstr "Bỏ qua các thẻ lạ"
 
-#: libexif/exif-data.c:1217
+#: libexif/exif-data.c:1201
 msgid "Ignore unknown tags when loading EXIF data."
 msgstr "Bỏ qua các thẻ lạ khi tải dữ liệu EXIF."
 
-#: libexif/exif-data.c:1218
+#: libexif/exif-data.c:1202
 msgid "Follow specification"
 msgstr "Theo đặc tả"
 
-#: libexif/exif-data.c:1219
+#: libexif/exif-data.c:1203
 msgid ""
 "Add, correct and remove entries to get EXIF data that follows the "
 "specification."
 msgstr "Thêm, sửa và gỡ bỏ mục nhập để tạo dữ liệu EXIF tùy theo đặc tả."
 
-#: libexif/exif-data.c:1221
+#: libexif/exif-data.c:1205
 msgid "Do not change maker note"
 msgstr "Không thay đổi ghi chú hãng chế tạo"
 
-#: libexif/exif-data.c:1222
+#: libexif/exif-data.c:1206
 msgid ""
 "When loading and resaving Exif data, save the maker note unmodified. Be "
 "aware that the maker note can get corrupted."
@@ -1678,8 +1677,8 @@ msgid ""
 "Tag '%s' is of format '%s' (which is against specification) but cannot be "
 "changed to format '%s'."
 msgstr ""
-"Thẻ « %s » có định dạng « %s » (mà vi phạm đặc tả) mà không thể thay đổi "
-"thành định dạng « %s »."
+"Thẻ « %s » có định dạng « %s » (mà vi phạm đặc tả) mà không thể thay đổi thành "
+"định dạng « %s »."
 
 #: libexif/exif-entry.c:354
 #, c-format
@@ -1695,8 +1694,8 @@ msgid ""
 "Tag 'UserComment' has been expanded to at least 8 bytes in order to follow "
 "the specification."
 msgstr ""
-"Thẻ « Người dùng Ghi chú » đã được mở rộng đến ít nhất 8 byte để tùy theo "
-"đặc tả."
+"Thẻ « Người dùng Ghi chú » đã được mở rộng đến ít nhất 8 byte để tùy theo đặc "
+"tả."
 
 #: libexif/exif-entry.c:396
 msgid ""
@@ -2254,88 +2253,88 @@ msgstr ""
 msgid "Byte at position %i: 0x%02x"
 msgstr "Có byte tại vị trí %i: 0x%02x"
 
-#: libexif/exif-entry.c:930
+#: libexif/exif-entry.c:926
 msgid "Unknown Exif Version"
 msgstr "Không biết phiên bản EXIF"
 
-#: libexif/exif-entry.c:934
+#: libexif/exif-entry.c:930
 #, c-format
 msgid "Exif Version %d.%d"
 msgstr "Phiên bản EXIF %d.%d"
 
-#: libexif/exif-entry.c:945
+#: libexif/exif-entry.c:941
 msgid "FlashPix Version 1.0"
 msgstr "FlashPix phiên bản 1.0"
 
-#: libexif/exif-entry.c:947
+#: libexif/exif-entry.c:943
 msgid "FlashPix Version 1.01"
 msgstr "FlashPix phiên bản 1.01"
 
-#: libexif/exif-entry.c:949
+#: libexif/exif-entry.c:945
 msgid "Unknown FlashPix Version"
 msgstr "Không biết phiên bản FlashPix"
 
-#: libexif/exif-entry.c:962 libexif/exif-entry.c:975 libexif/exif-entry.c:1627
-#: libexif/exif-entry.c:1632 libexif/exif-entry.c:1635
-#: libexif/exif-entry.c:1640 libexif/exif-entry.c:1641
+#: libexif/exif-entry.c:958 libexif/exif-entry.c:971 libexif/exif-entry.c:1623
+#: libexif/exif-entry.c:1628 libexif/exif-entry.c:1631
+#: libexif/exif-entry.c:1636 libexif/exif-entry.c:1637
 msgid "[None]"
 msgstr "[Không có]"
 
-#: libexif/exif-entry.c:964
+#: libexif/exif-entry.c:960
 msgid "(Photographer)"
 msgstr "(Nhà nhiếp ảnh)"
 
-#: libexif/exif-entry.c:978
+#: libexif/exif-entry.c:974
 msgid "(Editor)"
 msgstr "(Nhà soạn thảo)"
 
-#: libexif/exif-entry.c:1002
+#: libexif/exif-entry.c:998
 #, c-format
 msgid "%.02lf EV"
 msgstr "%.02lf EV"
 
-#: libexif/exif-entry.c:1003
+#: libexif/exif-entry.c:999
 #, c-format
 msgid " (f/%.01f)"
 msgstr " (f/%.01f)"
 
-#: libexif/exif-entry.c:1037
+#: libexif/exif-entry.c:1033
 #, c-format
 msgid " (35 equivalent: %d mm)"
 msgstr " (35 tương đương: %d mm)"
 
-#: libexif/exif-entry.c:1070 libexif/exif-entry.c:1071
+#: libexif/exif-entry.c:1066 libexif/exif-entry.c:1067
 msgid " sec."
 msgstr " giây"
 
-#: libexif/exif-entry.c:1082 libexif/exif-entry.c:1099
-#: libexif/exif-entry.c:1143
+#: libexif/exif-entry.c:1078 libexif/exif-entry.c:1095
+#: libexif/exif-entry.c:1139
 #, c-format
 msgid "%.02f EV"
 msgstr "%.02f EV"
 
-#: libexif/exif-entry.c:1085
+#: libexif/exif-entry.c:1081
 #, c-format
 msgid " (1/%d sec.)"
 msgstr " (1/%d giây)"
 
-#: libexif/exif-entry.c:1087
+#: libexif/exif-entry.c:1083
 #, c-format
 msgid " (%d sec.)"
 msgstr " (%d giây)"
 
-#: libexif/exif-entry.c:1100
+#: libexif/exif-entry.c:1096
 #, c-format
 msgid " (%.02f cd/m^2)"
 msgstr " (%.02f cd/m²)"
 
-#: libexif/exif-entry.c:1110
+#: libexif/exif-entry.c:1106
 msgid "DSC"
 msgstr "DSC"
 
-#: libexif/exif-entry.c:1112 libexif/exif-entry.c:1152
-#: libexif/exif-entry.c:1239 libexif/exif-entry.c:1290
-#: libexif/exif-entry.c:1299 libexif/exif-entry.c:1335
+#: libexif/exif-entry.c:1108 libexif/exif-entry.c:1148
+#: libexif/exif-entry.c:1235 libexif/exif-entry.c:1286
+#: libexif/exif-entry.c:1295 libexif/exif-entry.c:1331
 #: libexif/fuji/mnote-fuji-entry.c:236 libexif/fuji/mnote-fuji-entry.c:245
 #: libexif/pentax/mnote-pentax-entry.c:350
 #: libexif/pentax/mnote-pentax-entry.c:359
@@ -2343,74 +2342,74 @@ msgstr "DSC"
 msgid "Internal error (unknown value %i)"
 msgstr "Lỗi nội bộ (giá trị không rõ %i)"
 
-#: libexif/exif-entry.c:1120
+#: libexif/exif-entry.c:1116
 msgid "-"
 msgstr "-"
 
-#: libexif/exif-entry.c:1121
+#: libexif/exif-entry.c:1117
 msgid "Y"
 msgstr "Y"
 
-#: libexif/exif-entry.c:1122
+#: libexif/exif-entry.c:1118
 msgid "Cb"
 msgstr "Cb"
 
-#: libexif/exif-entry.c:1123
+#: libexif/exif-entry.c:1119
 msgid "Cr"
 msgstr "Cr"
 
-#: libexif/exif-entry.c:1124
+#: libexif/exif-entry.c:1120
 msgid "R"
 msgstr "R"
 
-#: libexif/exif-entry.c:1125
+#: libexif/exif-entry.c:1121
 msgid "G"
 msgstr "G"
 
-#: libexif/exif-entry.c:1126
+#: libexif/exif-entry.c:1122
 msgid "B"
 msgstr "B"
 
-#: libexif/exif-entry.c:1127
+#: libexif/exif-entry.c:1123
 msgid "reserved"
 msgstr "dành riêng"
 
-#: libexif/exif-entry.c:1150
+#: libexif/exif-entry.c:1146
 msgid "Directly photographed"
 msgstr "Chụp ảnh trực tiếp"
 
-#: libexif/exif-entry.c:1163
+#: libexif/exif-entry.c:1159
 msgid "YCbCr4:2:2"
 msgstr "YCbCr4:2:2"
 
-#: libexif/exif-entry.c:1165
+#: libexif/exif-entry.c:1161
 msgid "YCbCr4:2:0"
 msgstr "YCbCr4:2:0"
 
-#: libexif/exif-entry.c:1182
+#: libexif/exif-entry.c:1178
 #, c-format
 msgid "Within distance %i of (x,y) = (%i,%i)"
 msgstr "Trong khoảng cách %i trên (x,y) = (%i,%i)"
 
-#: libexif/exif-entry.c:1191
+#: libexif/exif-entry.c:1187
 #, c-format
 msgid "Within rectangle (width %i, height %i) around (x,y) = (%i,%i)"
 msgstr "Trong hộp (rộng %i, cao %i) chung quanh (x,y) = (%i,%i)"
 
-#: libexif/exif-entry.c:1197
+#: libexif/exif-entry.c:1193
 #, c-format
 msgid "Unexpected number of components (%li, expected 2, 3, or 4)."
 msgstr "Số thành phần bất ngờ (%li, còn ngờ 2, 3, hay 4)."
 
-#: libexif/exif-entry.c:1235
+#: libexif/exif-entry.c:1231
 msgid "Sea level"
 msgstr "Mặt biển"
 
-#: libexif/exif-entry.c:1237
+#: libexif/exif-entry.c:1233
 msgid "Sea level reference"
 msgstr "Tham chiếu mặt biển"
 
-#: libexif/exif-entry.c:1345
+#: libexif/exif-entry.c:1341
 #, c-format
 msgid "Unknown value %i"
 msgstr "Không rõ giá trị %i"
@@ -2523,8 +2522,8 @@ msgid ""
 "(NULL). see the separate volume of Recommended Exif Interoperability Rules "
 "(ExifR98) for other tags used for ExifR98."
 msgstr ""
-"Ngụ ý cách nhận diện quy tắc khả năng thao tác với nhau. Hãy dùng « R98 » "
-"cho Quy tắc ExifR98. Bốn byte được dùng, gồm mã kết thúc (RỖNG). Hãy xem tài "
+"Ngụ ý cách nhận diện quy tắc khả năng thao tác với nhau. Hãy dùng « R98 » cho "
+"Quy tắc ExifR98. Bốn byte được dùng, gồm mã kết thúc (RỖNG). Hãy xem tài "
 "liệu riêng Các Quy tắc Khả năng Thao tác với nhau (ExifR98) cho các thẻ khác "
 "được dùng cho ExifR98."
 
@@ -2671,8 +2670,8 @@ msgid ""
 "Indicates the GPS measurement mode. '2' means two-dimensional measurement "
 "and '3' means three-dimensional measurement is in progress."
 msgstr ""
-"Ngụ ý chế độ đo lường GPS. « 2 » có nghĩa là đang đo lường theo hai chiều ; "
-"« 3 » có nghĩa là đang đo lường theo ba chiều (3D)."
+"Ngụ ý chế độ đo lường GPS. « 2 » có nghĩa là đang đo lường theo hai chiều ; « "
+"3 » có nghĩa là đang đo lường theo ba chiều (3D)."
 
 #: libexif/exif-tag.c:133
 msgid "Measurement precision"
@@ -2719,8 +2718,8 @@ msgid ""
 "Indicates the reference for giving the direction of GPS receiver movement. "
 "'T' denotes true direction and 'M' is magnetic direction."
 msgstr ""
-"Ngụ ý tham chiếu để cung cấp hướng theo đó thiết bị nhận GPS di chuyển. « T "
-"» là hướng đúng, còn « M » là hướng từ."
+"Ngụ ý tham chiếu để cung cấp hướng theo đó thiết bị nhận GPS di chuyển. « T » "
+"là hướng đúng, còn « M » là hướng từ."
 
 #: libexif/exif-tag.c:147
 msgid "Direction of movement"
@@ -2770,8 +2769,8 @@ msgid ""
 "recorded."
 msgstr ""
 "Ngụ ý dữ liệu quan sát đo đạc được dùng bởi thiết bị nhận GPS. Nếu dữ liệu "
-"quan sát bị giới hạn ở Nhật bản thì giá trị của thẻ này là « TOKYO » hay « "
-"WGS-84 ». Nếu một thẻ Thông tin GPS được ghi thì rất khuyên cũng ghi thẻ này."
+"quan sát bị giới hạn ở Nhật bản thì giá trị của thẻ này là « TOKYO » hay « WGS-"
+"84 ». Nếu một thẻ Thông tin GPS được ghi thì rất khuyên cũng ghi thẻ này."
 
 #: libexif/exif-tag.c:161
 msgid "Reference for latitude of destination"
@@ -2783,8 +2782,8 @@ msgid ""
 "latitude. The ASCII value 'N' indicates north latitude, and 'S' is south "
 "latitude."
 msgstr ""
-"Ngụ ý nếu đích đến có độ vĩ Bắc hay Nam. Giá trị ASCII « N » ngụ ý độ vĩ "
-"Bắc, còn « S » là độ vĩ Nam."
+"Ngụ ý nếu đích đến có độ vĩ Bắc hay Nam. Giá trị ASCII « N » ngụ ý độ vĩ Bắc, "
+"còn « S » là độ vĩ Nam."
 
 #: libexif/exif-tag.c:165
 msgid "Latitude of destination"
@@ -2813,8 +2812,8 @@ msgid ""
 "Indicates whether the longitude of the destination point is east or west "
 "longitude. ASCII 'E' indicates east longitude, and 'W' is west longitude."
 msgstr ""
-"Ngụ ý nếu đích đến có độ kinh Đông hay Tây. Giá trị ASCII « E » ngụ ý độ "
-"kinh Đông, còn « W » là độ kinh Tây."
+"Ngụ ý nếu đích đến có độ kinh Đông hay Tây. Giá trị ASCII « E » ngụ ý độ kinh "
+"Đông, còn « W » là độ kinh Tây."
 
 #: libexif/exif-tag.c:177
 msgid "Longitude of destination"
@@ -2919,8 +2918,8 @@ msgid ""
 "the string is 11 bytes including NULL."
 msgstr ""
 "Một chuỗi ký tự mà ghi thông tin về ngày tháng và thời gian tương ứng với "
-"UTC (Thời gian Thế giới). Định dạng là « NNNN:TT:nn ». Chiều dài của chuỗi "
-"là 11 byte bao gồm NULL."
+"UTC (Thời gian Thế giới). Định dạng là « NNNN:TT:nn ». Chiều dài của chuỗi là "
+"11 byte bao gồm NULL."
 
 #: libexif/exif-tag.c:215
 msgid "GPS differential correction"
@@ -3789,8 +3788,8 @@ msgstr "Tác giả XP"
 
 #: libexif/exif-tag.c:645
 msgid ""
-"A character string containing the name of the image creator, encoded in "
-"UTF-16LE."
+"A character string containing the name of the image creator, encoded in UTF-"
+"16LE."
 msgstr "Một chuỗi ký tự chứa tên của người tạo ảnh, mã hoá theo UTF-16LE."
 
 #: libexif/exif-tag.c:649
@@ -3799,8 +3798,8 @@ msgstr "Từ khoá XP"
 
 #: libexif/exif-tag.c:650
 msgid ""
-"A character string containing key words describing the image, encoded in "
-"UTF-16LE."
+"A character string containing key words describing the image, encoded in UTF-"
+"16LE."
 msgstr "Một chuỗi ký tự chứa từ khoá diễn tả ảnh, mã hoá theo UTF-16LE."
 
 #: libexif/exif-tag.c:654
@@ -3899,14 +3898,13 @@ msgstr ""
 "chỉ một tên tập tin âm thanh. Trong trường hợp [3], lấy thí dụ, đối với tập "
 "tin ảnh Exif « DSC00001.JPG », chỉ đưa ra « SND00001.WAV » như là tập tin âm "
 "thanh Exif tương ứng. Khi có ba tập tin âm thanh Exif, « SND00001.WAV », « "
-"SND00002.WAV » và « SND00003.WAV », có ngụ ý cùng một tên tập tin ảnh Exif "
-"(« DSC00001.JPG ») cho ba tập tin đó. Bằng cách hợp nhất nhiều thông tin "
-"tương ứng khác nhau, cũng có thể hỗ trợ nhiều khả năng phát lại khác nhau. "
-"Phương pháp sử dụng thông tin có quan hệ thì nhờ sự thực hiện bên chức năng "
-"phát lại. Vì thông tin này nằm trong một chuỗi ký tự ASCII, nó được NULL "
-"chấm dứt. Khi thẻ này được dùng để ánh xạ tập tin kiểu âm thanh, quan hệ "
-"giữa tập tin âm thanh và dữ liệu ảnh cũng phải được ngụ ý bên tập tin âm "
-"thanh."
+"SND00002.WAV » và « SND00003.WAV », có ngụ ý cùng một tên tập tin ảnh Exif (« "
+"DSC00001.JPG ») cho ba tập tin đó. Bằng cách hợp nhất nhiều thông tin tương "
+"ứng khác nhau, cũng có thể hỗ trợ nhiều khả năng phát lại khác nhau. Phương "
+"pháp sử dụng thông tin có quan hệ thì nhờ sự thực hiện bên chức năng phát "
+"lại. Vì thông tin này nằm trong một chuỗi ký tự ASCII, nó được NULL chấm "
+"dứt. Khi thẻ này được dùng để ánh xạ tập tin kiểu âm thanh, quan hệ giữa tập "
+"tin âm thanh và dữ liệu ảnh cũng phải được ngụ ý bên tập tin âm thanh."
 
 #: libexif/exif-tag.c:721
 msgid ""

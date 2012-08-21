@@ -7,11 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libexif 0.6.17\n"
 "Report-Msgid-Bugs-To: libexif-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-10-24 19:34+0900\n"
+"POT-Creation-Date: 2009-11-12 22:15-0800\n"
 "PO-Revision-Date: 2008-11-25 11:38+0100\n"
 "Last-Translator: Ivan Masár <helix84@centrum.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
-"Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1287,7 +1286,7 @@ msgstr "%.2f mm"
 msgid "%.2f EV"
 msgstr "%.2f EV"
 
-#: libexif/canon/mnote-canon-entry.c:655 libexif/exif-entry.c:1067
+#: libexif/canon/mnote-canon-entry.c:655 libexif/exif-entry.c:1063
 #, fuzzy, c-format
 msgid "1/%i"
 msgstr "1/%d"
@@ -1700,35 +1699,35 @@ msgstr "Motorola"
 msgid "Intel"
 msgstr "Intel"
 
-#: libexif/exif-data.c:797
+#: libexif/exif-data.c:784
 msgid "Size of data too small to allow for EXIF data."
 msgstr "Veľkosť dát je príliš malá, aby umožnila EXIF údaje."
 
-#: libexif/exif-data.c:858
+#: libexif/exif-data.c:845
 msgid "EXIF marker not found."
 msgstr "EXIF značka nebola nájdená."
 
-#: libexif/exif-data.c:885
+#: libexif/exif-data.c:872
 msgid "EXIF header not found."
 msgstr "EXIF hlavička nebola nájdená."
 
-#: libexif/exif-data.c:901
+#: libexif/exif-data.c:888
 msgid "Unknown encoding."
 msgstr "Neznáme kódovanie."
 
-#: libexif/exif-data.c:1216
+#: libexif/exif-data.c:1200
 msgid "Ignore unknown tags"
 msgstr "Ignorovať neznáme značky."
 
-#: libexif/exif-data.c:1217
+#: libexif/exif-data.c:1201
 msgid "Ignore unknown tags when loading EXIF data."
 msgstr "Ignorovať neznáme značky počas načítavania EXIF údajov."
 
-#: libexif/exif-data.c:1218
+#: libexif/exif-data.c:1202
 msgid "Follow specification"
 msgstr "Dodržiavať špecifikáciu"
 
-#: libexif/exif-data.c:1219
+#: libexif/exif-data.c:1203
 msgid ""
 "Add, correct and remove entries to get EXIF data that follows the "
 "specification."
@@ -1736,11 +1735,11 @@ msgstr ""
 "Pridať opraviť a odstrániť záznamy, aby sme získali EXIF údaje, ktoré "
 "dodržiavajú špecifikáciu."
 
-#: libexif/exif-data.c:1221
+#: libexif/exif-data.c:1205
 msgid "Do not change maker note"
 msgstr "Nemeniť poznámku o výrobcovi"
 
-#: libexif/exif-data.c:1222
+#: libexif/exif-data.c:1206
 msgid ""
 "When loading and resaving Exif data, save the maker note unmodified. Be "
 "aware that the maker note can get corrupted."
@@ -2415,88 +2414,88 @@ msgstr "Značka UserComment nezodpovedá štandardu, ale obsahuje údaje."
 msgid "Byte at position %i: 0x%02x"
 msgstr "bajt na pozícii %i: 0x%02x"
 
-#: libexif/exif-entry.c:930
+#: libexif/exif-entry.c:926
 msgid "Unknown Exif Version"
 msgstr "Neznáma verzia Exif"
 
-#: libexif/exif-entry.c:934
+#: libexif/exif-entry.c:930
 #, c-format
 msgid "Exif Version %d.%d"
 msgstr "Exif verzia %d.%d"
 
-#: libexif/exif-entry.c:945
+#: libexif/exif-entry.c:941
 msgid "FlashPix Version 1.0"
 msgstr "FlashPix verzia 1.0"
 
-#: libexif/exif-entry.c:947
+#: libexif/exif-entry.c:943
 msgid "FlashPix Version 1.01"
 msgstr "FlashPix verzia 1.01"
 
-#: libexif/exif-entry.c:949
+#: libexif/exif-entry.c:945
 msgid "Unknown FlashPix Version"
 msgstr "Neznáma verzia FlashPix"
 
-#: libexif/exif-entry.c:962 libexif/exif-entry.c:975 libexif/exif-entry.c:1627
-#: libexif/exif-entry.c:1632 libexif/exif-entry.c:1635
-#: libexif/exif-entry.c:1640 libexif/exif-entry.c:1641
+#: libexif/exif-entry.c:958 libexif/exif-entry.c:971 libexif/exif-entry.c:1623
+#: libexif/exif-entry.c:1628 libexif/exif-entry.c:1631
+#: libexif/exif-entry.c:1636 libexif/exif-entry.c:1637
 msgid "[None]"
 msgstr "[žiadny]"
 
-#: libexif/exif-entry.c:964
+#: libexif/exif-entry.c:960
 msgid "(Photographer)"
 msgstr "(fotograf)"
 
-#: libexif/exif-entry.c:978
+#: libexif/exif-entry.c:974
 msgid "(Editor)"
 msgstr "(redaktor)"
 
-#: libexif/exif-entry.c:1002
+#: libexif/exif-entry.c:998
 #, c-format
 msgid "%.02lf EV"
 msgstr "%.02lf EV"
 
-#: libexif/exif-entry.c:1003
+#: libexif/exif-entry.c:999
 #, c-format
 msgid " (f/%.01f)"
 msgstr " (f/%.01f)"
 
-#: libexif/exif-entry.c:1037
+#: libexif/exif-entry.c:1033
 #, c-format
 msgid " (35 equivalent: %d mm)"
 msgstr " (ekvivalent 35: %d mm)"
 
-#: libexif/exif-entry.c:1070 libexif/exif-entry.c:1071
+#: libexif/exif-entry.c:1066 libexif/exif-entry.c:1067
 msgid " sec."
 msgstr " sek."
 
-#: libexif/exif-entry.c:1082 libexif/exif-entry.c:1099
-#: libexif/exif-entry.c:1143
+#: libexif/exif-entry.c:1078 libexif/exif-entry.c:1095
+#: libexif/exif-entry.c:1139
 #, c-format
 msgid "%.02f EV"
 msgstr "%.02f EV"
 
-#: libexif/exif-entry.c:1085
+#: libexif/exif-entry.c:1081
 #, fuzzy, c-format
 msgid " (1/%d sec.)"
 msgstr " 1/%d sek.)"
 
-#: libexif/exif-entry.c:1087
+#: libexif/exif-entry.c:1083
 #, fuzzy, c-format
 msgid " (%d sec.)"
 msgstr " %d sek.)"
 
-#: libexif/exif-entry.c:1100
+#: libexif/exif-entry.c:1096
 #, c-format
 msgid " (%.02f cd/m^2)"
 msgstr " (%.02f cd/m^2)"
 
-#: libexif/exif-entry.c:1110
+#: libexif/exif-entry.c:1106
 msgid "DSC"
 msgstr "DSC"
 
-#: libexif/exif-entry.c:1112 libexif/exif-entry.c:1152
-#: libexif/exif-entry.c:1239 libexif/exif-entry.c:1290
-#: libexif/exif-entry.c:1299 libexif/exif-entry.c:1335
+#: libexif/exif-entry.c:1108 libexif/exif-entry.c:1148
+#: libexif/exif-entry.c:1235 libexif/exif-entry.c:1286
+#: libexif/exif-entry.c:1295 libexif/exif-entry.c:1331
 #: libexif/fuji/mnote-fuji-entry.c:236 libexif/fuji/mnote-fuji-entry.c:245
 #: libexif/pentax/mnote-pentax-entry.c:350
 #: libexif/pentax/mnote-pentax-entry.c:359
@@ -2504,77 +2503,77 @@ msgstr "DSC"
 msgid "Internal error (unknown value %i)"
 msgstr "Vnútorná chyba (neznáma hodnota %i)"
 
-#: libexif/exif-entry.c:1120
+#: libexif/exif-entry.c:1116
 msgid "-"
 msgstr "-"
 
-#: libexif/exif-entry.c:1121
+#: libexif/exif-entry.c:1117
 msgid "Y"
 msgstr "Y"
 
-#: libexif/exif-entry.c:1122
+#: libexif/exif-entry.c:1118
 msgid "Cb"
 msgstr "Cb"
 
-#: libexif/exif-entry.c:1123
+#: libexif/exif-entry.c:1119
 msgid "Cr"
 msgstr "Cr"
 
-#: libexif/exif-entry.c:1124
+#: libexif/exif-entry.c:1120
 msgid "R"
 msgstr "R"
 
-#: libexif/exif-entry.c:1125
+#: libexif/exif-entry.c:1121
 msgid "G"
 msgstr "G"
 
-#: libexif/exif-entry.c:1126
+#: libexif/exif-entry.c:1122
 msgid "B"
 msgstr "B"
 
-#: libexif/exif-entry.c:1127
+#: libexif/exif-entry.c:1123
 msgid "reserved"
 msgstr "rezervované"
 
-#: libexif/exif-entry.c:1150
+#: libexif/exif-entry.c:1146
 msgid "Directly photographed"
 msgstr ""
 
-#: libexif/exif-entry.c:1163
+#: libexif/exif-entry.c:1159
 msgid "YCbCr4:2:2"
 msgstr "YCbCr4:2:2"
 
-#: libexif/exif-entry.c:1165
+#: libexif/exif-entry.c:1161
 msgid "YCbCr4:2:0"
 msgstr "YCbCr4:2:0"
 
-#: libexif/exif-entry.c:1182
+#: libexif/exif-entry.c:1178
 #, c-format
 msgid "Within distance %i of (x,y) = (%i,%i)"
 msgstr "Vo vzdialenosti %i z (x,y) = (%i,%i)"
 
-#: libexif/exif-entry.c:1191
+#: libexif/exif-entry.c:1187
 #, c-format
 msgid "Within rectangle (width %i, height %i) around (x,y) = (%i,%i)"
 msgstr "V obdĺžniku (šírka %i, výška %i) okolo (x,y) = (%i,%i)"
 
-#: libexif/exif-entry.c:1197
+#: libexif/exif-entry.c:1193
 #, c-format
 msgid "Unexpected number of components (%li, expected 2, 3, or 4)."
 msgstr "Neočakávaný počet zložiek (%li, očakávalo sa 2, 3 alebo 4)."
 
-#: libexif/exif-entry.c:1235
+#: libexif/exif-entry.c:1231
 #, fuzzy
 msgid "Sea level"
 msgstr "Úroveň čiernej"
 
 # exif-gpsaltituderef
-#: libexif/exif-entry.c:1237
+#: libexif/exif-entry.c:1233
 #, fuzzy
 msgid "Sea level reference"
 msgstr "referencia nadmorskej výšky"
 
-#: libexif/exif-entry.c:1345
+#: libexif/exif-entry.c:1341
 #, fuzzy, c-format
 msgid "Unknown value %i"
 msgstr "neznáma hodnota %hi"
@@ -3831,8 +3830,8 @@ msgid ""
 "The exposure bias. The units is the APEX value. Ordinarily it is given in "
 "the range of -99.99 to 99.99."
 msgstr ""
-"Expozičné skreslenie. Jednotka je hodnota APEX. Bežne sa udáva v rozsahu "
-"-99.99 až 99.99."
+"Expozičné skreslenie. Jednotka je hodnota APEX. Bežne sa udáva v rozsahu -"
+"99.99 až 99.99."
 
 # FUZZY exif-aperturevalue
 #: libexif/exif-tag.c:562
@@ -3999,8 +3998,8 @@ msgstr "XP autor"
 
 #: libexif/exif-tag.c:645
 msgid ""
-"A character string containing the name of the image creator, encoded in "
-"UTF-16LE."
+"A character string containing the name of the image creator, encoded in UTF-"
+"16LE."
 msgstr ""
 
 #: libexif/exif-tag.c:649
@@ -4009,8 +4008,8 @@ msgstr "XP kľúčové slová"
 
 #: libexif/exif-tag.c:650
 msgid ""
-"A character string containing key words describing the image, encoded in "
-"UTF-16LE."
+"A character string containing key words describing the image, encoded in UTF-"
+"16LE."
 msgstr ""
 
 #: libexif/exif-tag.c:654
