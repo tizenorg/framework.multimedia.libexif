@@ -35,8 +35,6 @@
 #include <libexif/olympus/exif-mnote-data-olympus.h>
 #include <libexif/pentax/exif-mnote-data-pentax.h>
 
-#include <dlfcn.h>
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -49,15 +47,6 @@
 #define JPEG_MARKER_APP1 0xe1
 
 static const unsigned char ExifHeader[] = {0x45, 0x78, 0x69, 0x66, 0x00, 0x00};
-
-typedef ExifMnoteData * (* ExifMnoteDataNewFunc)   (ExifMem *mem);
-
-typedef struct _ExifFunc ExifFunc;
-
-struct _ExifFunc {
-	unsigned int ref_count;
-	ExifMnoteDataNewFunc data_new;
-};
 
 struct _ExifDataPrivate
 {
@@ -75,9 +64,6 @@ struct _ExifDataPrivate
 
 	ExifDataOption options;
 	ExifDataType data_type;
-
-	void *dl_lib;
-	ExifFunc *func;
 };
 
 static void *
@@ -100,12 +86,6 @@ ExifMnoteData *
 exif_data_get_mnote_data (ExifData *d)
 {
 	return (d && d->priv) ? d->priv->md : NULL;
-}
-
-ExifByteOrder
-exif_data_get_data_order (ExifData *d)
-{
-	return (d && d->priv) ? d->priv->order : -1;
 }
 
 ExifData *
@@ -148,10 +128,6 @@ exif_data_new_mem (ExifMem *mem)
 			return (NULL);
 		}
 		data->ifd[i]->parent = data;
-	}
-
-	if(!data->priv->dl_lib){
-		data->priv->dl_lib = dlopen("libmnote-samsung.so", RTLD_NOW);
 	}
 
 	/* Default options */
@@ -527,20 +503,6 @@ cmp_func_motorola (const void *elem1, const void *elem2)
 			 (const unsigned char *) elem2, EXIF_BYTE_ORDER_MOTOROLA);
 }
 
-int
-exif_mnote_data_samsung_identify (const ExifData *ed, const ExifEntry *e)
-{
-	char value[128] = {0};
-
-	ExifEntry *em = exif_data_get_entry (ed, EXIF_TAG_MAKE);
-	if (!em)
-		return 0;
-
-	return ((e->size >= 18 && e->data) &&
-		(!strcmp (exif_entry_get_value (em, value, sizeof(value)), "samsung") ||
-		!strcmp (exif_entry_get_value (em, value, sizeof(value)), "SAMSUNG")));
-}
-
 static void
 exif_data_save_data_content (ExifData *data, ExifContent *ifd,
 			     unsigned char **d, unsigned int *ds,
@@ -760,8 +722,7 @@ typedef enum {
 	EXIF_DATA_TYPE_MAKER_NOTE_PENTAX	= 3,
 	EXIF_DATA_TYPE_MAKER_NOTE_NIKON		= 4,
 	EXIF_DATA_TYPE_MAKER_NOTE_CASIO		= 5,
-	EXIF_DATA_TYPE_MAKER_NOTE_FUJI 		= 6,
-	EXIF_DATA_TYPE_MAKER_NOTE_SAMSUNG	= 7
+	EXIF_DATA_TYPE_MAKER_NOTE_FUJI 		= 6
 } ExifDataTypeMakerNote;
 
 /*! If MakerNote is recognized, load it.
@@ -774,7 +735,6 @@ static void
 interpret_maker_note(ExifData *data, const unsigned char *d, unsigned int ds)
 {
 	int mnoteid;
-	ExifMnoteData *(*open_lib_func)(ExifMem *mem) = NULL;
 	ExifEntry* e = exif_data_get_entry (data, EXIF_TAG_MAKER_NOTE);
 	if (!e)
 		return;
@@ -800,22 +760,6 @@ interpret_maker_note(ExifData *data, const unsigned char *d, unsigned int ds)
 		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG,
 			"ExifData", "Pentax MakerNote variant type %d", mnoteid);
 		data->priv->md = exif_mnote_data_pentax_new (data->priv->mem);
-	} else if ((mnoteid = exif_mnote_data_samsung_identify (data, e)) != 0) {
-		exif_log (data->priv->log, EXIF_LOG_CODE_DEBUG,
-			"ExifData", "Samsung MakerNote variant type %d", mnoteid);
-			if (data->priv->dl_lib){
-				*(ExifMnoteData **)&open_lib_func = dlsym(data->priv->dl_lib,
-                     "exif_mnote_data_samsung_new");
-			}
-			if (open_lib_func) {
-				data->priv->md = open_lib_func(data->priv->mem);
-				if (!data->priv->md) {
-					return;
-				}
-			} else {
-				return;
-			}
-			data->priv->md->dl_md_lib = data->priv->dl_lib;
 	}
 
 	/* 
@@ -1107,12 +1051,6 @@ exif_data_free (ExifData *data)
 			exif_mnote_data_unref (data->priv->md);
 			data->priv->md = NULL;
 		}
-
-		if (data->priv->dl_lib) {			// ADD DLOAD
-			dlclose(data->priv->dl_lib);
-			data->priv->dl_lib = NULL;
-		}
-
 		exif_mem_free (mem, data->priv);
 		exif_mem_free (mem, data);
 	}
@@ -1335,236 +1273,4 @@ ExifDataType
 exif_data_get_data_type (ExifData *d)
 {
 	return (d && d->priv) ? d->priv->data_type : EXIF_DATA_TYPE_UNKNOWN;
-}
-
-/* Used for making maker note data structure from external sources */
-int
-exif_data_mnote_data_new(ExifData *d,  Manufacturer maker,  ExifDataOption o)
-{
-	ExifMnoteData *md;
-	ExifMem *mem;
-	ExifMnoteData *(*open_lib_func)(ExifMem *mem) = NULL;
-
-	if(!d) return 0;
-
-	md = d->priv->md;
-	mem = d->priv->mem;
-
-	switch(maker){
-		case MAKER_CANON:
-			md = exif_mnote_data_canon_new(mem, o);
-			break;
-		case MAKER_FUJI:
-			md = exif_mnote_data_fuji_new(mem);
-			break;
-		case MAKER_OLYMPUS:
-		case MAKER_NIKON:
-			md = exif_mnote_data_olympus_new(mem);
-			break;
-		case MAKER_PENTAX:
-		case MAKER_CASIO:
-			md = exif_mnote_data_pentax_new(mem);
-			break;
-		case MAKER_SAMSUNG:
-			if(d->priv->dl_lib){
-				*(ExifMnoteData **)&open_lib_func = dlsym(d->priv->dl_lib,
-                     "exif_mnote_data_samsung_new");
-			}
-			if(open_lib_func){
-				md = open_lib_func(mem);
-				if (!md) {
-					return 0;
-				}
-			} else {
-				return 0;
-			}
-			md->dl_md_lib = d->priv->dl_lib;
-			break;
-		default:
-			break;
-	}
-	if(!md)
-		return 0;
-	else{
-		d->priv->md = md;
-		return 1;
-	}
-}
-
-int
-exif_data_mnote_set_mem_for_adding_entry(ExifMnoteData *md, Manufacturer maker)
-{
-	ExifMem *mem;
-	unsigned int count;
-	ExifMnoteDataVendor *mds;
-
-	if(!md) return 0;
-
-	mem = md->mem;
-
-	switch(maker){
-		case MAKER_CANON:
-			break;
-		case MAKER_FUJI:
-			break;
-		case MAKER_OLYMPUS:
-		case MAKER_NIKON:
-			break;
-		case MAKER_PENTAX:
-		case MAKER_CASIO:
-			break;
-		case MAKER_SAMSUNG:
-			mds = (ExifMnoteDataVendor *) md;
-			count = ++(mds->count);
-			if(count == 1) {
-				mds->entries = exif_mem_alloc(mem, sizeof(MnoteVendorEntry) * count);
-				if(!mds->entries) {
-					EXIF_LOG_NO_MEMORY(md->log, "ExifMnoteSamsung", count);
-					mds->count--;
-					return 0;
-				}
-			}
-			else {
-				MnoteVendorEntry **e;
-				e = exif_mem_realloc(mem, mds->entries, sizeof(MnoteVendorEntry) * count);
-				if(!e) {
-					EXIF_LOG_NO_MEMORY(md->log, "ExifMnoteSamsung", count);
-					mds->count--;
-					return 0;
-				}
-				mds->entries = e;
-			}
-			mds->entries[count-1].format = 0;
-			break;
-		default:
-			return 0;
-	}
-	return 1;
-}
-
-int
-exif_data_mnote_set_add_entry (ExifMnoteData* md, Manufacturer maker, int tag, ExifFormat fmt, int components, int id)
-{
-	int count;
-	ExifMnoteDataVendor *mds;
-	void *(*set_value_by_index)(MnoteVendorEntry *entry, int index) = NULL;
-
-	if(!md) return 0;
-
-	switch(maker){
-		case MAKER_CANON:
-			break;
-		case MAKER_FUJI:
-			break;
-		case MAKER_OLYMPUS:
-		case MAKER_NIKON:
-			break;
-		case MAKER_PENTAX:
-		case MAKER_CASIO:
-			break;
-		case MAKER_SAMSUNG:
-			mds = (ExifMnoteDataVendor *) md;
-			count = mds->count;
-			mds->entries[count-1].tag = tag;
-			mds->entries[count-1].format = fmt;
-			mds->entries[count-1].components = components;
-			mds->entries[count-1].size = (exif_format_get_size(fmt))*components;
-			mds->entries[count-1].data = exif_mem_alloc(md->mem, mds->entries[count-1].size);
-
-			*(void **)&set_value_by_index = dlsym(md->dl_md_lib,
-                     "mnote_samsung_entry_set_value_by_index");
-			if (set_value_by_index) {
-				set_value_by_index(&mds->entries[count-1], id);
-			} else {
-				return 0;
-			}
-			break;
-		default:
-			return 0;
-	}
-	return 1;
-}
-
-int
-exif_data_mnote_set_add_entry_subtag(ExifMnoteData* md, Manufacturer maker, int tag, ExifFormat fmt, int components, int subtag1, int id1, int subtag2, int id2, int val)
-{
-	int count;
-	ExifMnoteDataVendor *mds;
-	void *(*set_value_by_subtag)(MnoteVendorEntry *entry, ExifShort stag1, int sindex1, ExifShort stag2, int sindex2, ExifShort sval) = NULL;
-
-	if(!md) return 0;
-
-	switch(maker){
-		case MAKER_CANON:
-			break;
-		case MAKER_FUJI:
-			break;
-		case MAKER_OLYMPUS:
-		case MAKER_NIKON:
-			break;
-		case MAKER_PENTAX:
-		case MAKER_CASIO:
-			break;
-		case MAKER_SAMSUNG:
-			mds = (ExifMnoteDataVendor *) md;
-			count = mds->count;
-			mds->entries[count-1].tag = tag;
-			mds->entries[count-1].format = fmt;
-			mds->entries[count-1].components = components;
-			mds->entries[count-1].size = (exif_format_get_size(fmt))*components;
-			mds->entries[count-1].data = exif_mem_alloc(md->mem, mds->entries[count-1].size);
-			*(void **)&set_value_by_subtag = dlsym(md->dl_md_lib,
-                     "mnote_samsung_entry_set_value_by_subtag");
-			if (set_value_by_subtag) {
-				set_value_by_subtag(&mds->entries[count-1], subtag1, id1, subtag2, id2, val);
-			} else {
-				return 0;
-			}
-			break;
-		default:
-			return 0;
-	}
-	return 1;
-}
-
-int
-exif_data_mnote_set_add_entry_string(ExifMnoteData* md, Manufacturer maker, int tag, ExifFormat fmt, int components, const char* string)
-{
-	int count;
-	ExifMnoteDataVendor *mds;
-	void *(*set_value_by_string)(const MnoteVendorEntry *entry, char *v, unsigned int maxlen) = NULL;
-
-	if(!md) return 0;
-
-	switch(maker){
-		case MAKER_CANON:
-			break;
-		case MAKER_FUJI:
-			break;
-		case MAKER_OLYMPUS:
-		case MAKER_NIKON:
-			break;
-		case MAKER_PENTAX:
-		case MAKER_CASIO:
-			break;
-		case MAKER_SAMSUNG:
-			mds = (ExifMnoteDataVendor *) md;
-			count = mds->count;
-			mds->entries[count-1].tag = tag;
-			mds->entries[count-1].format = fmt;
-			mds->entries[count-1].components = components;
-			mds->entries[count-1].size = (exif_format_get_size(fmt))*components;
-			mds->entries[count-1].data = exif_mem_alloc(md->mem, mds->entries[count-1].size);
-			*(void **)&set_value_by_string = dlsym(md->dl_md_lib,
-                     "mnote_samsung_entry_set_value_by_string");
-			if (set_value_by_string) {
-				set_value_by_string(&mds->entries[count-1], string, components);
-			} else {
-				return 0;
-			}
-			break;
-		default:
-			return 0;
-	}
-	return 1;
 }

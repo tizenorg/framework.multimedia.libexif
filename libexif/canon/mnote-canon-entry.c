@@ -33,6 +33,38 @@
 
 /* #define DEBUG */
 
+#define CF(format,target,v,maxlen)                              \
+{                                                               \
+        if (format != target) {                                 \
+                snprintf (v, maxlen,                            \
+                        _("Invalid format '%s', "               \
+                        "expected '%s'."),                      \
+                        exif_format_get_name (format),          \
+                        exif_format_get_name (target));         \
+                break;                                          \
+        }                                                       \
+}
+
+#define CC(number,target,v,maxlen)                                      \
+{                                                                       \
+        if (number != target) {                                         \
+                snprintf (v, maxlen,                                    \
+                        _("Invalid number of components (%i, "          \
+                        "expected %i)."), (int) number, (int) target);  \
+                break;                                                  \
+        }                                                               \
+}
+#define CC2(number,t1,t2,v,maxlen)                                      \
+{                                                                       \
+	if ((number != t1) && (number != t2)) {                         \
+		snprintf (v, maxlen,                                    \
+			_("Invalid number of components (%i, "          \
+			"expected %i or %i)."), (int) number,		\
+			(int) t1, (int) t2);  				\
+		break;                                                  \
+	}                                                               \
+}
+
 #define UNDEFINED 0xFF
     
 static const struct canon_entry_table_t {

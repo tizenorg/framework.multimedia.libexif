@@ -173,9 +173,6 @@ AC_MSG_CHECKING([whether to create internal code docs])
 AC_MSG_RESULT([${set_enable_internal_docs}])
 AM_CONDITIONAL([ENABLE_INTERNAL_DOCS], [test "x${set_enable_internal_docs}" = "xyes"])
 
-additional_lib=false
-AC_CHECK_FILE([libexif/samsung/exif-mnote-data-samsung.h],additional_lib=true,additional_lib=false)
-AM_CONDITIONAL([ADDITIONAL], [test "x${additional_lib}" = "xtrue"])
 
 # ---------------------------------------------------------------------------
 # i18n support

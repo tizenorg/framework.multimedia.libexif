@@ -42,20 +42,6 @@ typedef struct _ExifDataPrivate ExifDataPrivate;
 #include <libexif/exif-mnote-data.h>
 #include <libexif/exif-mem.h>
 
-/*! Represents the manufacturer maker note id */
-/**
- * @brief Represents the manufacturer maker note id
-*/
-typedef enum{
-	MAKER_CANON		= 1,
-	MAKER_OLYMPUS		= 2,
-	MAKER_PENTAX		= 3,
-	MAKER_NIKON		= 4,
-	MAKER_CASIO		= 5,
-	MAKER_FUJI 		= 6,
-	MAKER_SAMSUNG	= 7
-}Manufacturer;
-
 /*! Represents the entire EXIF data found in an image */
 struct _ExifData
 {
@@ -163,26 +149,6 @@ void          exif_data_set_byte_order  (ExifData *data, ExifByteOrder order);
  */
 ExifMnoteData *exif_data_get_mnote_data (ExifData *d);
 
-/*! Return the byte order of the EXIF data.
- * The pointer references a member of the #ExifData structure and must NOT be
- * freed by the caller.
- *
- * \param[in] d EXIF data
- * \return ExifByteOrder 0 ( EXIF_BYTE_ORDER_MOTOROLA ) or 1 ( EXIF_BYTE_ORDER_INTEL ),
- *    or -1  if not found or not supported
-
- * @addtogroup 	CAPI_MEDIA_EXIF_MODULE EXIF
- * @brief 		Get byte order of exif data
- * @details 	Get order whether it is MOTOROLA or INTEL format ( for checking error of ordering )
- * @remarks
- * @param[in] 	ExifData d
- * @return 		If it exists, it will return string of tag name. If there's no tag, it will return NULL
- * @pre
- * @see			exif_data_get_byte_order
- * @see			exif_data_set_byte_order
-*/
-ExifByteOrder exif_data_get_data_order (ExifData *d);
-
 /*! Fix the EXIF data to bring it into specification. Call #exif_content_fix
  * on each IFD to fix existing entries, create any new entries that are
  * mandatory but do not yet exist, and remove any entries that are not
@@ -271,130 +237,6 @@ void exif_data_dump (ExifData *data);
  * \param[in] log #ExifLog
  */
 void exif_data_log  (ExifData *data, ExifLog *log);
-
-/*!  Create new mnote data and set up related function pointers for particular manufacturer.
- *
- * \param[in,out] d EXIF data
- * \param[in] maker Manufacturer
- * \param[in] o option
- * \return 1 if  normal, else 0 if abnormal
- *
- * @addtogroup 	CAPI_MEDIA_EXIF_MODULE EXIF
- * @brief 	New mnote data and map functions
- * @details 	Create new instance of maker note and set up related function pointers for particular manufacturer.
- * @remarks
- * @param[in,out] d   basic allocated ExifData
- * @param[in] maker   index of imagemaker vendor
- * @param[in] o   contorlling options about TAGs
- * @return 	1 if  normal, else 0 if abnormal
- * @pre
- * @see		Manufacturer
- * @see		ExifDataOption
-*/
-int exif_data_mnote_data_new(ExifData *d,  Manufacturer maker, ExifDataOption o);
-
-/*! Allocate makernote entries memory for particular manufacturer.
- *
- * \param[in,out] d EXIF Makernote data
- * \param[in] maker Manufacturer
- * \return 1 if  normal, else 0 if abnormal
-
- * @addtogroup 	CAPI_MEDIA_EXIF_MODULE EXIF
- * @brief 	New memory for maker note
- * @details 	Allocate makernote entries memory for particular manufacturer.
- * @remarks
- * @param[in] 	ExifData d
- * @return 	If it exists, it will return string of tag name. If there's no tag, it will return NULL
- * @pre		exif_data_mnote_data_new
- * @see
-*/
-int exif_data_mnote_set_mem_for_adding_entry(ExifMnoteData *md, Manufacturer maker);
-
-/*! Add a makernote entry for particular manufacturer.
- *
- * \param[in,out] d EXIF Makernote data
- * \param[in] maker Manufacturer
- * \param[in] tag Manufacturer specified makernote tag
- * \param[in] fmt Exifformat
- * \param[in] components The number of components
- * \param[in] id Index
- * \return 1 if  normal, else 0 if abnormal
- *
- * @addtogroup 	CAPI_MEDIA_EXIF_MODULE EXIF
- * @brief 	Add new entry according to TAG ids.
- * @details 	Add a makernote entry for particular manufacturer.
- * @remarks
- * @param[in,out] d EXIF Makernote data
- * @param[in] maker Manufacturer
- * @param[in] tag Manufacturer specified makernote tag
- * @param[in] fmt Exifformat
- * @param[in] components The number of components
- * @param[in] id Index
- * @return 	1 if  normal, else 0 if abnormal
- * @pre		exif_data_mnote_data_new , exif_data_mnote_set_mem_for_adding_entry
- * @see
-*/
-int exif_data_mnote_set_add_entry(ExifMnoteData *md, Manufacturer maker, int tag, ExifFormat fmt, int components, int id);
-
-/*! Add a makernote entry using subtag information for particular manufacturer.
- *
- * \param[in,out] d EXIF Makernote data
- * \param[in] maker Manufacturer
- * \param[in] tag Manufacturer specified makernote tag
- * \param[in] fmt Exifformat
- * \param[in] components The number of components
- * \param[in] subtag1 Manufacturer specified makernote subtag
- * \param[in] id1 Index for subtag1
- * \param[in] subtag2 Manufacturer specified makernote subtag
- * \param[in] id2 Indoex for subtag2
- * \param[in] val Integer value
- * \return 1 if  normal, else 0 if abnormal
- *
- * @addtogroup 	CAPI_MEDIA_EXIF_MODULE EXIF
- * @brief 	Add new sub entry according to TAG ids.
- * @details 	Add a makernote entry using subtag information for particular manufacturer.
- * @remarks
- * @param[in,out] d EXIF Makernote data
- * @param[in] maker Manufacturer
- * @param[in] tag Manufacturer specified makernote tag
- * @param[in] fmt Exifformat
- * @param[in] components The number of components
- * @param[in] subtag1 Manufacturer specified makernote subtag
- * @param[in] id1 Index for subtag1
- * @param[in] subtag2 Manufacturer specified makernote subtag
- * @param[in] id2 Indoex for subtag2
- * @param[in] val Integer value
- * @return 	1 if  normal, else 0 if abnormal
- * @pre		exif_data_mnote_data_new , exif_data_mnote_set_mem_for_adding_entry, exif_data_mnote_set_add_entry
- * @see
-*/
-int exif_data_mnote_set_add_entry_subtag(ExifMnoteData* md, Manufacturer maker, int tag, ExifFormat fmt, int components, int subtag1, int id1, int subtag2, int id2, int val);
-
-/*! Add a makernote entry using string information for particular manufacturer.
- *
- * \param[in,out] d EXIF Makernote data
- * \param[in] maker Manufacturer
- * \param[in] tag Manufacturer specified makernote tag
- * \param[in] fmt Exifformat
- * \param[in] components The number of components
- * \param[in] string String value to be written
- * \return 1 if  normal, else 0 if abnormal
- *
- * @addtogroup 	CAPI_MEDIA_EXIF_MODULE EXIF
- * @brief 	Add new makernote entry using string
- * @details 	Add a makernote entry using string information for particular manufacturer.
- * @remarks
- * @param[in,out] d EXIF Makernote data
- * @param[in] maker Manufacturer
- * @param[in] tag Manufacturer specified makernote tag
- * @param[in] fmt Exifformat
- * @param[in] components The number of components
- * @param[in] string String value to be written
- * @return 	1 if  normal, else 0 if abnormal
- * @pre		exif_data_mnote_data_new , exif_data_mnote_set_mem_for_adding_entry
- * @see
-*/
-int exif_data_mnote_set_add_entry_string(ExifMnoteData* md, Manufacturer maker, int tag, ExifFormat fmt, int components, const char* string);
 
 /*! Return an #ExifEntry for the given tag if found in any IFD.
  * Each IFD is searched in turn and the first containing a tag with

@@ -38,7 +38,7 @@ host_triplet = @host@
 DIST_COMMON = $(libexifinclude_HEADERS) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in $(srcdir)/canon/Makefile-files \
 	$(srcdir)/fuji/Makefile-files $(srcdir)/olympus/Makefile-files \
-	$(srcdir)/pentax/Makefile-files $(srcdir)/samsung/Makefile-files
+	$(srcdir)/pentax/Makefile-files
 subdir = libexif
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4m/gp-check-shell-environment.m4 \
@@ -114,10 +114,6 @@ libmnote_pentax_la_DEPENDENCIES = $(am__DEPENDENCIES_1)
 am_libmnote_pentax_la_OBJECTS = mnote-pentax-entry.lo \
 	exif-mnote-data-pentax.lo mnote-pentax-tag.lo
 libmnote_pentax_la_OBJECTS = $(am_libmnote_pentax_la_OBJECTS)
-libmnote_samsung_la_DEPENDENCIES = $(am__DEPENDENCIES_1)
-am_libmnote_samsung_la_OBJECTS = mnote-samsung-entry.lo \
-	exif-mnote-data-samsung.lo mnote-samsung-tag.lo
-libmnote_samsung_la_OBJECTS = $(am_libmnote_samsung_la_OBJECTS)
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -146,10 +142,10 @@ am__v_GEN_ = $(am__v_GEN_$(AM_DEFAULT_VERBOSITY))
 am__v_GEN_0 = @echo "  GEN   " $@;
 SOURCES = $(libexif_la_SOURCES) $(libmnote_canon_la_SOURCES) \
 	$(libmnote_fuji_la_SOURCES) $(libmnote_olympus_la_SOURCES) \
-	$(libmnote_pentax_la_SOURCES) $(libmnote_samsung_la_SOURCES)
+	$(libmnote_pentax_la_SOURCES)
 DIST_SOURCES = $(libexif_la_SOURCES) $(libmnote_canon_la_SOURCES) \
 	$(libmnote_fuji_la_SOURCES) $(libmnote_olympus_la_SOURCES) \
-	$(libmnote_pentax_la_SOURCES) $(libmnote_samsung_la_SOURCES)
+	$(libmnote_pentax_la_SOURCES)
 HEADERS = $(libexifinclude_HEADERS)
 ETAGS = etags
 CTAGS = ctags
@@ -295,7 +291,7 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-EXTRA_DIST = exif-system.h exif.h
+EXTRA_DIST = exif-system.h exif.h libexif.sym
 
 # The -no-undefined makes it possible to build DLLs for Windows,
 # or shared libraries for Tru64 or AIX (according to the autobook
@@ -337,6 +333,7 @@ libmnote_pentax_la_SOURCES = \
 
 libmnote_pentax_la_LIBADD = $(LTLIBINTL)
 libexif_la_LDFLAGS = \
+	-export-symbols $(srcdir)/libexif.sym \
 	-no-undefined -version-info @LIBEXIF_VERSION_INFO@
 
 libexif_la_SOURCES = \
@@ -367,8 +364,7 @@ libexif_la_LIBADD = \
 	libmnote-canon.la		\
 	libmnote-fuji.la	\
 	libmnote-olympus.la	\
-	libmnote-pentax.la	\
-	-ldl
+	libmnote-pentax.la
 
 libexifincludedir = $(includedir)/libexif
 libexifinclude_HEADERS = \
@@ -386,17 +382,13 @@ libexifinclude_HEADERS = \
 	exif-tag.h		\
 	exif-utils.h		\
 	_stdint.h
-if ADDITIONAL
-libexifinclude_HEADERS += 	\
-	samsung/mnote-samsung-tag.h
-endif
 
 DISTCLEANFILES = _stdint.h
 all: all-am
 
 .SUFFIXES:
 .SUFFIXES: .c .lo .o .obj
-$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(srcdir)/canon/Makefile-files $(srcdir)/fuji/Makefile-files $(srcdir)/olympus/Makefile-files $(srcdir)/pentax/Makefile-files $(srcdir)/samsung/Makefile-files $(am__configure_deps)
+$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(srcdir)/canon/Makefile-files $(srcdir)/fuji/Makefile-files $(srcdir)/olympus/Makefile-files $(srcdir)/pentax/Makefile-files $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -476,8 +468,6 @@ libmnote-olympus.la: $(libmnote_olympus_la_OBJECTS) $(libmnote_olympus_la_DEPEND
 	$(AM_V_CCLD)$(LINK)  $(libmnote_olympus_la_OBJECTS) $(libmnote_olympus_la_LIBADD) $(LIBS)
 libmnote-pentax.la: $(libmnote_pentax_la_OBJECTS) $(libmnote_pentax_la_DEPENDENCIES) 
 	$(AM_V_CCLD)$(LINK)  $(libmnote_pentax_la_OBJECTS) $(libmnote_pentax_la_LIBADD) $(LIBS)
-libmnote-samsung.la: $(libmnote_samsung_la_OBJECTS) $(libmnote_samsung_la_DEPENDENCIES)
-	$(AM_V_CCLD)$(LINK)  $(libmnote_samsung_la_OBJECTS) $(libmnote_samsung_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -498,7 +488,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/exif-mnote-data-fuji.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/exif-mnote-data-olympus.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/exif-mnote-data-pentax.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/exif-mnote-data-samsung.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/exif-mnote-data.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/exif-tag.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/exif-utils.Plo@am__quote@
@@ -510,9 +499,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mnote-olympus-tag.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mnote-pentax-entry.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mnote-pentax-tag.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mnote-samsung-entry.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mnote-samsung-tag.Plo@am__quote@@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mnote-samsung-entry.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mnote-samsung-tag.Plo@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -633,30 +619,6 @@ mnote-pentax-tag.lo: pentax/mnote-pentax-tag.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='pentax/mnote-pentax-tag.c' object='mnote-pentax-tag.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o mnote-pentax-tag.lo `test -f 'pentax/mnote-pentax-tag.c' || echo '$(srcdir)/'`pentax/mnote-pentax-tag.c
-
-mnote-samsung-entry.lo: samsung/mnote-samsung-entry.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT mnote-samsung-entry.lo -MD -MP -MF $(DEPDIR)/mnote-samsung-entry.Tpo -c -o mnote-samsung-entry.lo `test -f 'samsung/mnote-samsung-entry.c' || echo '$(srcdir)/'`samsung/mnote-samsung-entry.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mnote-samsung-entry.Tpo $(DEPDIR)/mnote-samsung-entry.Plo
-@am__fastdepCC_FALSE@	$(AM_V_CC) @AM_BACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='samsung/mnote-samsung-entry.c' object='mnote-samsung-entry.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o mnote-samsung-entry.lo `test -f 'samsung/mnote-samsung-entry.c' || echo '$(srcdir)/'`samsung/mnote-samsung-entry.c
-
-exif-mnote-data-samsung.lo: samsung/exif-mnote-data-samsung.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT exif-mnote-data-samsung.lo -MD -MP -MF $(DEPDIR)/exif-mnote-data-samsung.Tpo -c -o exif-mnote-data-samsung.lo `test -f 'samsung/exif-mnote-data-samsung.c' || echo '$(srcdir)/'`samsung/exif-mnote-data-samsung.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/exif-mnote-data-samsung.Tpo $(DEPDIR)/exif-mnote-data-samsung.Plo
-@am__fastdepCC_FALSE@	$(AM_V_CC) @AM_BACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='samsung/exif-mnote-data-samsung.c' object='exif-mnote-data-samsung.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o exif-mnote-data-samsung.lo `test -f 'samsung/exif-mnote-data-samsung.c' || echo '$(srcdir)/'`samsung/exif-mnote-data-samsung.c
-
-mnote-samsung-tag.lo: samsung/mnote-samsung-tag.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT mnote-samsung-tag.lo -MD -MP -MF $(DEPDIR)/mnote-samsung-tag.Tpo -c -o mnote-samsung-tag.lo `test -f 'samsung/mnote-samsung-tag.c' || echo '$(srcdir)/'`samsung/mnote-samsung-tag.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mnote-samsung-tag.Tpo $(DEPDIR)/mnote-samsung-tag.Plo
-@am__fastdepCC_FALSE@	$(AM_V_CC) @AM_BACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='samsung/mnote-samsung-tag.c' object='mnote-samsung-tag.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o mnote-samsung-tag.lo `test -f 'samsung/mnote-samsung-tag.c' || echo '$(srcdir)/'`samsung/mnote-samsung-tag.c
 
 mostlyclean-libtool:
 	-rm -f *.lo

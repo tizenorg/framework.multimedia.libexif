@@ -28,6 +28,28 @@
 
 #include "mnote-fuji-entry.h"
 
+#define CF(format,target,v,maxlen)                              \
+{                                                               \
+        if (format != target) {                                 \
+                snprintf (v, maxlen,	                        \
+                        _("Invalid format '%s', "               \
+                        "expected '%s'."),                      \
+                        exif_format_get_name (format),          \
+                        exif_format_get_name (target));         \
+                break;                                          \
+        }                                                       \
+}
+
+#define CC(number,target,v,maxlen)                                      \
+{                                                                       \
+        if (number != target) {                                         \
+                snprintf (v, maxlen,                                    \
+                        _("Invalid number of components (%i, "          \
+                        "expected %i)."), (int) number, (int) target);  \
+                break;                                                  \
+        }                                                               \
+}
+
 static const struct {
 	ExifTag tag;
 	struct {

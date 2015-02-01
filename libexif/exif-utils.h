@@ -184,57 +184,6 @@ void exif_array_set_byte_order (ExifFormat, unsigned char *, unsigned int,
 
 /* For compatibility with older versions */
 
-#define CF(format,target,v,maxlen)                              \
-do \
-{                                                               \
-        if (format != target) {                                 \
-                snprintf (v, maxlen,	                        \
-                        _("Invalid format '%s', "               \
-                        "expected '%s'."),                      \
-                        exif_format_get_name (format),          \
-                        exif_format_get_name (target));         \
-                break;                                          \
-        }                                                       \
-}while(0)
-
-#define CF2(format,target1,target2,v,maxlen)                    \
-do \
-{                                                               \
-        if ((format != target1) && (format != target2)) {       \
-                snprintf (v, maxlen,	                        \
-                        _("Invalid format '%s', "               \
-                        "expected '%s' or '%s'."),              \
-                        exif_format_get_name (format),          \
-                        exif_format_get_name (target1),         \
-                        exif_format_get_name (target2));        \
-                break;                                          \
-        }                                                       \
-}while(0)
-
-#define CC(number,target,v,maxlen)                                      \
-do \
-{                                                                       \
-        if (number != target) {                                         \
-                snprintf (v, maxlen,                                    \
-                        _("Invalid number of components (%i, "          \
-                        "expected %i)."), (int) number, (int) target);  \
-                break;                                                  \
-        }                                                               \
-}while(0)
-
-#define CC2(number,t1,t2,v,maxlen)                                      \
-do \
-{                                                                       \
-	if ((number < t1) || (number > t2)) {                           \
-		snprintf (v, maxlen,                                    \
-			_("Invalid number of components (%i, "          \
-			"expected %i or %i)."), (int) number,		\
-			(int) t1, (int) t2);  				\
-		break;                                                  \
-	}                                                               \
-}while(0)
-
-
 /*! \deprecated Use EXIF_TAG_SUB_SEC_TIME instead. */
 #define EXIF_TAG_SUBSEC_TIME EXIF_TAG_SUB_SEC_TIME
 

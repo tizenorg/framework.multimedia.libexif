@@ -46,7 +46,7 @@ struct _ExifMnoteDataMethods {
 
 	/* Query */
 	unsigned int (* count)           (ExifMnoteData *);
-	unsigned int (* get_id)          (ExifMnoteData *, unsigned int);
+        unsigned int (* get_id)          (ExifMnoteData *, unsigned int);
 	const char * (* get_name)        (ExifMnoteData *, unsigned int);
 	const char * (* get_title)       (ExifMnoteData *, unsigned int);
 	const char * (* get_description) (ExifMnoteData *, unsigned int);
@@ -55,8 +55,6 @@ struct _ExifMnoteDataMethods {
 
 /*! \internal */
 typedef struct _ExifMnoteDataPriv ExifMnoteDataPriv;
-
-typedef struct _ExifMnoteFunc ExifMnoteFunc;
 
 /*! \internal */
 struct _ExifMnoteData 
@@ -70,50 +68,7 @@ struct _ExifMnoteData
 
 	/* Memory management */
 	ExifMem *mem;
-
-	void *dl_md_lib;
-
-	ExifMnoteFunc *mnote_func;
 };
-
-typedef struct _ExifMnoteDataVendor ExifMnoteDataVendor;
-
-typedef struct _MnoteVendorEntry        MnoteVendorEntry;
-
-struct _MnoteVendorEntry {
-	ExifShort tag;
-	ExifFormat format;
-	unsigned long components;
-
-	unsigned char *data;
-	unsigned int size;
-
-	ExifByteOrder order;
-};
-
-struct _ExifMnoteDataVendor {
-	ExifMnoteData parent;
-
-	MnoteVendorEntry *entries;
-	unsigned int count;
-
-	ExifByteOrder order;
-	unsigned int offset;
-};
-
-
-typedef void (* ExifMnoteEntrySetIndexFunc) (MnoteVendorEntry *entry, int index);
-typedef void (* ExifMnoteEntrySetStringFunc) (MnoteVendorEntry *entry, unsigned char* string, unsigned int len);
-typedef void (* ExifMnoteEntrySetSubtagFunc) (MnoteVendorEntry *entry, ExifShort stag1, int sindex1, ExifShort stag2, int sindex2, ExifShort sval);
-
-struct _ExifMnoteFunc {
-	unsigned int ref_count;
-	ExifMnoteEntrySetIndexFunc set_index;
-	ExifMnoteEntrySetStringFunc set_string;
-	ExifMnoteEntrySetSubtagFunc set_subtag;
-};
-
-
 
 /*! \internal */
 void exif_mnote_data_construct      (ExifMnoteData *, ExifMem *mem);
