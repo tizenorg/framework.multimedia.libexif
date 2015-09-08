@@ -1,10 +1,10 @@
-#sbs-git:slp/pkgs/l/libexif libexif 0.6.19 57d8319d0146f2739299469313fc694846cd7c10
 Name:       libexif
 Summary:    Library for extracting extra information from image files
-Version: 0.6.19
-Release:    1
+Version:    0.6.21
+Release:    13
+VCS:        framework/multimedia/libexif#libexif_0.6.21-5-2-g80e7b14e48db02bcff587ce87a1e3d7520d5ce29
 Group:      System/Libraries
-License:    LGPLv2+
+License:    LGPL-2.1+
 #URL:        http://libexif.sourceforge.net/
 # somewhat heavily modified to add Samsung's own tags for some reason...
 Source0:    %{name}-%{version}-samsung.tar.gz
@@ -33,16 +33,19 @@ for writing programs that use libexif.
 %setup -q -n %{name}-%{version}-samsung
 
 %build
-
+sh ./autogen.sh
 %configure --disable-static \
-    --disable-docs
+    --disable-docs \
+    --disable-nls
 
 make %{?jobs:-j%jobs}
 
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/license
+cp COPYING %{buildroot}/usr/share/license/%{name}
 %make_install
-%find_lang libexif-12
+#%find_lang libexif-12
 
 rm -rf $RPM_BUILD_ROOT%{_datadir}/doc/libexif
 
@@ -52,8 +55,11 @@ rm -rf %{buildroot}
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%files -f libexif-12.lang
-%{_libdir}/libexif.so.*
+%files
+#%files -f libexif-12.lang
+%manifest libexif.manifest
+%{_libdir}/*.so*
+%{_datadir}/license/%{name}
 
 %files devel
 %{_includedir}/libexif
