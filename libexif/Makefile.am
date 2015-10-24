@@ -1,3 +1,4 @@
+AUTOMAKE_OPTIONS = subdir-objects
 EXTRA_DIST =
 lib_LTLIBRARIES =
 noinst_LTLIBRARIES =

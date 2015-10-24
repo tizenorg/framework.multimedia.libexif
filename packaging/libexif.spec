@@ -1,7 +1,7 @@
 Name:       libexif
 Summary:    Library for extracting extra information from image files
 Version:    0.6.21
-Release:    13
+Release:    15
 VCS:        framework/multimedia/libexif#libexif_0.6.21-5-2-g80e7b14e48db02bcff587ce87a1e3d7520d5ce29
 Group:      System/Libraries
 License:    LGPL-2.1+
